@@ -1,0 +1,70 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<int> spiralMatrix(vector<vector<int>> arr){
+    int m = arr.size();
+    int n = arr[0].size();
+    
+    int top = 0, bottom = m - 1;
+    int left = 0, right = n - 1;
+    int dir = 0;
+
+    vector<int> result;
+
+    while(top <= bottom && left <= right){
+        if(dir == 0){
+            for(int i = left; i <= right; i++){
+                result.push_back(arr[top][i]);
+            }
+            top++;
+        }
+        else if(dir == 1){
+            for(int i = top; i <= bottom; i++){
+                result.push_back(arr[i][right]);
+            }
+            right--;
+        }
+        else if(dir == 2){
+            for(int i = right; i >= left; i--){
+                result.push_back(arr[bottom][i]);
+            }
+            bottom--;
+        }
+        else if(dir == 3){
+            for(int i = bottom; i >= top; i--){
+                result.push_back(arr[i][left]);
+            }
+            left++;
+        }
+        dir = (dir + 1) % 4;
+    }
+
+    return result;
+}
+
+int main(){
+    int elements;
+    cin >> elements;
+
+    int m;
+    cin >> m;
+
+    int n;
+    cin >> n;
+
+    vector<vector<int>> arr(m, vector<int>(n));
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            cin >> arr[i][j];
+        }
+    }
+
+    vector<int> final_result = spiralMatrix(arr);
+
+    for(int i = 0; i < final_result.size(); i++){
+        cout << final_result[i] << " ";
+    }
+
+    return 0;
+}
