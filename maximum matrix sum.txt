@@ -1,0 +1,46 @@
+the question is to return th maximum sum of the matrix:
+
+
+thought process:
+1.first try to sum all the elements in matrix even if the matrix contains the negative value try to make them as positive using (abs) function and find the result
+2.now our task is to find how many negative numbers are there in matrix,lets say if total negative numbers that present in matrix is:x, if that (x%2==0) which it is a even number....our task is quite easy now we can simply return the overall sum of the matrix.
+3.in tragic case where our number is odd number here the savour formula that we need to return sum-2*smallesvalue.
+4.now here comes the question what is the smallest value,it nothing but overall smallvalue int matrix even there is also formula to find smallvalue in matrix,first conside smallvalue=INT_MAX,the later update value using min function while iterating in the matrix.
+
+here is the code:
+// You are using GCC
+#include<bits/stdc++.h>
+using namespace std;
+int maximumMatrixSum(vector<vector<int>> arr){
+    int count_negatives=0;
+    int smallestvalue=INT_MAX;
+    int n=arr.size();
+    int sum=0;
+    int m=arr[0].size();
+    
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            sum+=abs(arr[i][j]);
+             if(arr[i][j]<0){
+            count_negatives++;
+            }
+            smallestvalue=min(smallestvalue,arr[i][j]);
+        }
+    }
+    if(count_negatives%2==0){
+        return sum;
+    }
+    return sum-2*smallestvalue;
+}
+int main(){
+    int n,m;
+    cin>>n>>m;
+    vector<vector<int>> arr(n,vector<int>(m));
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>arr[i][j];
+        }
+    }
+    int result=maximumMatrixSum(arr);
+    cout<<result;
+}
