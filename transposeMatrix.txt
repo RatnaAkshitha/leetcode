@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<vector<int>> transposeMatrix(vector<vector<int>> arr){
+    int n=arr.size();
+    int m=arr[0].size();
+    vector<vector<int>> result(n,vector<int>(m));
+    
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            result[j][i]=arr[i][j];
+            
+        }
+        cout<<endl;
+    }
+    return result;
+}
+int main(){
+    int n,m;
+    cin>>n>>m;
+    
+    vector<vector<int>> arr(n,vector<int>(m));
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>arr[i][j];
+        }
+    }
+    vector<vector<int>> final_result=transposeMatrix(arr);
+    for(int i=0;i<final_result.size();i++){
+        for(int j=0;j<final_result[0].size();j++){
+            cout<<final_result[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+    
+}
