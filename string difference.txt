@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+char stringDifference(string s1,string s2){
+    unordered_map<char,int> mp;
+    for(auto ch:s1){
+        mp[ch]++;
+    }
+    for(auto ch:s2){
+        mp[ch]--;
+        if(mp[ch]<0){
+        return ch;
+    }
+    
+    }
+    
+}
+int main(){
+    string s1;
+    cin>>s1;
+    
+    string s2;
+    cin>>s2;
+    
+    char result=stringDifference(s1,s2);
+    cout<<result<<endl;
+    
+    
+    
+    
+}
+
+
+
+==========================================Another approach==========================================
+#include<bits/stdc++.h>
+using namespace std;
+char stringDifference(string s1,string s2){
+    int xors=0;
+    for(char ch:s1){
+        xors^=ch;
+    }
+    for(char ch:s2){
+        xors^=ch;
+    }
+    return (char)xors;
+    
+}
+int main(){
+    string s1;
+    cin>>s1;
+    
+    string s2;
+    cin>>s2;
+    
+    char result=stringDifference(s1,s2);
+    cout<<result<<endl;
+    
+    
+    
+    
+}
