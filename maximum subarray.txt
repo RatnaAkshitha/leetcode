@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    for(int i=0;i<n;i++){
+        for(int j=i;j<n;j++){
+            int sum=0;
+            for(int k=i;k<=j;k++){
+                cout<<arr[k]<<" "; 
+            }
+            cout<<endl;
+        }
+    }
+    return 0;
+}
+
+
+====================================subarray addition====================================
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int maxi=INT_MIN;
+    
+    
+    for(int i=0;i<n;i++){
+        for(int j=i;j<n;j++){
+            int sum=0;
+            for(int k=i;k<=j;k++){
+                cout<<arr[k]<<" ";
+                sum+=arr[k];
+                
+            }
+            cout<<endl;
+            maxi=max(sum,maxi);
+        }
+    }
+    cout<<"sum:"<<maxi;
+    return 0;
+}
+
+
+====================================(BETTER APPROAXH)subarray addition====================================
+
+
+====================================subarray product====================================
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int maxi=INT_MIN;
+    
+    
+    for(int i=0;i<n;i++){
+        for(int j=i;j<n;j++){
+            int prod=1;
+            for(int k=i;k<=j;k++){
+                cout<<arr[k]<<" ";
+                prod*=arr[k];
+                
+            }
+            cout<<endl;
+            maxi=max(prod,maxi);
+        }
+    }
+    cout<<"sum:"<<maxi;
+    return 0;
+}
