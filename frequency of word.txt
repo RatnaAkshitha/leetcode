@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string word;
+    cout << "Enter a word: ";
+    getline(cin, word);
+
+    
+    int hash[256 - 'a'] = {0};  
+
+    
+    for (char c : word) {
+        if (isalpha(c)) {
+            c = tolower(c); 
+            hash[c - 'a']++; 
+        }
+    }
+
+   
+    cout << "\nCharacter Frequencies:\n";
+    for (char ch = 'a'; ch <= 'z'; ++ch) {
+        if (hash[ch - 'a'] > 0) {
+            cout << ch << ": " << hash[ch - 'a'] << endl;
+        }
+    }
+
+    return 0;
+}
