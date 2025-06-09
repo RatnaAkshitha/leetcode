@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s1,s2;
+    cin>>s1>>s2;
+    
+    int hash[256]={0};
+    
+    for(char ch:s2){
+        hash[int(ch)]++;
+    }
+    for(char ch:s1){
+        if(hash[int(ch)]>0){
+            cout<<ch;
+            hash[(int(ch))]--;
+        }
+    }
+}
