@@ -1,0 +1,87 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node{
+    int data;
+    Node* left;
+    Node* right;
+    Node(int val){
+        data=val;
+        left=nullptr;
+        right=nullptr;
+    }
+};
+Node* Treebuild(){
+    int val;
+    cout<<"Enter root value(-1 for null)"<<endl;
+    cin>>val;
+    if(val==-1){
+        return nullptr;
+    }
+    Node* root=new Node(val);
+    queue<Node*> q;
+    q.push(root);
+    
+    while(!q.empty()){
+        Node* current=q.front();
+        q.pop();
+        
+        int leftVal,rightVal;
+        cout<<"enter leftchild (-1 for null):"<<endl;
+        cin>>leftVal;
+        if(leftVal!=-1){
+            current->left=new Node(leftVal);
+            q.push(current->left);
+        }
+        cout<<"enter rightchild (-1 for null):"<<endl;
+        cin>>rightVal;
+        if(rightVal!=-1){
+            current->right=new Node(rightVal);
+            q.push(current->right);
+        }
+    }
+    return root;
+}
+void inorder(Node* root){
+    if(root==nullptr){
+        return;
+    }
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+    
+}
+void preorder(Node* root){
+    if(root==nullptr){
+        return;
+    }
+    
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void postorder(Node* root){
+    if(root==nullptr){
+        return;
+    }
+    
+    
+    preorder(root->left);
+    preorder(root->right);
+    cout<<root->data<<" ";
+}
+
+int main(){
+    Node* root=Treebuild();
+    
+    cout<<"Inorder Traversal:"<<endl;
+    inorder(root);
+    cout<<endl;
+    cout<<"Preorder Traversal:"<<endl;
+    preorder(root);
+    cout<<endl;
+    cout<<"Postorder Traversal:"<<endl;
+    postorder(root);
+    cout<<endl;
+    
+    
+}
